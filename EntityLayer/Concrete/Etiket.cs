@@ -11,7 +11,7 @@ namespace EntityLayer.Concrete
   {
     [Key]
     public int EtiketID { get; set; }
-    public int? Adi { get; set; }
+    public string Adi { get; set; }
     public bool Silindi { get; set; }
     public DateTime? KayitTarihi { get; set; }
     public DateTime? GuncellemeTarihi { get; set; }
