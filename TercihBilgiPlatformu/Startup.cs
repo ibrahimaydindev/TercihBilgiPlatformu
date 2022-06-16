@@ -11,6 +11,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.EntityFramework;
 
 namespace TercihBilgiPlatformu
 {
@@ -26,6 +30,14 @@ namespace TercihBilgiPlatformu
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+      services.AddTransient<IKullaniciService, KullaniciManager>();
+      services.AddTransient<IKullaniciDAL, EFKullaniciRepository>();
+
+
+      //services.AddControllers();
+      //services.AddMvc();
+      services.AddCors(options => options.AddDefaultPolicy(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));
+
       services.AddControllersWithViews();
       services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x => 
       {
