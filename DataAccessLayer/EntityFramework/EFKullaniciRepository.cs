@@ -35,7 +35,8 @@ namespace DataAccessLayer.EntityFramework
 
     public List<Kullanici> GetList()
     {
-      throw new NotImplementedException();
+      return context.Kullanicis.ToList();
+            context.SaveChanges();
     }
 
     public void Guncelle(Kullanici item)

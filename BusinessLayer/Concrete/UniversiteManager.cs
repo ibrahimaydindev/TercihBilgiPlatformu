@@ -30,7 +30,7 @@ namespace BusinessLayer.Concrete
 
     public List<Universite> GetList()
     {
-      return _universiteDAL.GetList();
+      return _universiteDAL.GetListAll();
     }
 
     public void Guncelle(Universite item)

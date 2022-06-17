@@ -9,7 +9,7 @@ namespace DataAccessLayer.Abstract
 {
   public interface IUniversiteDAL
   {
-    List<Universite> GetList();
+    List<Universite> GetListAll();
     Universite GetByID(int id);
     void Ekle(Universite item);
     void Guncelle(Universite item);

@@ -1,6 +1,8 @@
 ﻿using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Repositories;
 using EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +11,16 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework
 {
-  public class EFBolumRepository : IBolumDAL
-  {
-    public void Ekle(Bolum item)
+   
+
+    public class EFBolumRepository : GenericRepository<Bolum>, IBolumDAL
+  {     Context c =new Context(); 
+       
+        public void Ekle(Bolum item)
     {
-      throw new NotImplementedException();
-    }
+            throw new NotImplementedException();
+
+        }
 
     public Bolum GetByID(int id)
     {
@@ -23,8 +29,9 @@ namespace DataAccessLayer.EntityFramework
 
     public List<Bolum> GetList()
     {
-      throw new NotImplementedException();
-    }
+          return   c.Bolums.ToList();
+            c.SaveChanges();
+        }
 
     public void Guncelle(Bolum item)
     {

@@ -1,48 +1,48 @@
-﻿@using EntityLayer.Concrete
-@model List<Universite>
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using EntityLayer.Concrete
+@model IPagedList<Etiket>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <table class="table table-hover">
   <thead>
     <tr>
       <th scope="col">İD</th>
-      <th scope="col">ÜNİVERSİTE ADI</th>
+      <th scope="col">ETİKET  ADI</th>
       <th scope="col">DURUM</th>
       <th scope="col">KAYIT TARİHİ</th>
-      
+      <th scope="col">GÜNCELLEME TARİHİ</th>
     </tr>
   </thead>
+
   <tbody>
       @foreach(var item in Model){
     <tr>
       
-      <td>@item.UniversiteID</td>
-      <td>@item.Ad</td>
+      <td>@item.EtiketID</td>
+      <td>@item.Adi</td>
       <td>@item.Silindi</td>
       <td>@item.KayitTarihi.Value.ToShortDateString()</td>
+      <td>@item.GuncellemeTarihi.Value.ToShortDateString()</td>
       <td><a href="#" class="btn btn-danger">Sil</td> 
       <td><a href="#" class="btn btn-success">GÜNCELLE</td> 
-     
     </tr>
       }
+     
   </tbody>
+  
 </table>
+
+@Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new {page}))
+
+
+
+
+
     
     
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -1,0 +1,53 @@
+﻿@using EntityLayer.Concrete
+
+@model List<Kullanici>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">İD</th>
+      <th scope="col">ADI SOYADI</th>
+      <th scope="col">CİNSİYET</th>
+      <th scope="col">DOĞUM TARİHİ</th>
+      <th scope="col">OKUL ADI</th>
+      <th scope="col">BÖLÜM ADI</th>
+      <th scope="col">MEZUN</th>
+      <th scope="col">E-MAİL</th>
+      <th scope="col">TELEFON</th>
+      <th scope="col">KULLANICI ADI</th>
+      <th scope="col">ŞİFRE</th>
+      <th scope="col">DURUM</th>
+      <th scope="col">KAYIT TARİHİ</th>
+       
+    </tr>
+  </thead>
+  <tbody>
+      @foreach(var item in Model){
+    <tr>
+      
+      <td>@item.KullaniciID</td>
+      <td>@item.KullaniciAdi</td>
+      <td>@item.Cinsiyet</td>
+      <td>@item.DogumTarihi.Value.ToShortDateString()</td>
+      <td>@item.OkulAdi</td>
+      <td>@item.BolumAdi</td>
+      <td>@item.Mezun</td>
+      <td>@item.EMail</td>
+      <td>@item.Telefon</td>
+      <td>@item.KullaniciAdi</td>
+      <td>@item.Sifre</td>
+      <td>@item.Silindi</td>
+      <td>@item.KayitTarihi.Value.ToShortDateString()</td>
+      <td><a href="#" class="btn btn-danger">Sil</td> 
+      <td><a href="#" class="btn btn-success">GÜNCELLE</td> 
+
+     
+    </tr>
+      }
+  </tbody>
+</table>
+

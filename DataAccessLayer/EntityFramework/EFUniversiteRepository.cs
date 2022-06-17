@@ -1,6 +1,8 @@
 ﻿using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Repositories;
 using EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +11,13 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework
 {
-  public class EFUniversiteRepository : IUniversiteDAL
+  public class EFUniversiteRepository :GenericRepository<Universite>, IUniversiteDAL
   {
+        Context c =new Context();
+       
     public void Ekle(Universite item)
     {
-      throw new NotImplementedException();
+           
     }
 
     public Universite GetByID(int id)
@@ -21,10 +25,12 @@ namespace DataAccessLayer.EntityFramework
       throw new NotImplementedException();
     }
 
-    public List<Universite> GetList()
+    public List<Universite> GetListAll()
     {
-      throw new NotImplementedException();
-    }
+          return   c.Universites.ToList();
+            c.SaveChanges();
+
+        }
 
     public void Guncelle(Universite item)
     {

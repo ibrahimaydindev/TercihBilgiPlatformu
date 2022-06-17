@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Repositories;
 using EntityLayer.Concrete;
 using System;
@@ -9,8 +10,10 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework
 {
+    
   public class EFEtiketRepository : IEtiketDAL
   {
+        Context c = new Context();
     public void Ekle(Etiket item)
     {
       throw new NotImplementedException();
@@ -23,7 +26,8 @@ namespace DataAccessLayer.EntityFramework
 
     public List<Etiket> GetList()
     {
-      throw new NotImplementedException();
+            return c.Etikets.ToList();
+            c.SaveChanges();
     }
 
     public void Guncelle(Etiket item)

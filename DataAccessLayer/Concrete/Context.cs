@@ -12,7 +12,7 @@ namespace DataAccessLayer.Concrete
   {
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-      optionsBuilder.UseSqlServer("server=LAPTOP-29QULOVF;database=TercihBilgiPlatformuDB;integrated security=true;");
+      optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB;database=TercihBilgiPlatformuDB;integrated security=true;");
     }
 
     public DbSet<Arkadas> Arkadas { get; set; }
